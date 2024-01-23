@@ -28,10 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', function () {
-    return view('index');
-});
-
+// Route for index page
+Route::get('/', [CallController::class, 'index']);
 // Route for submitting the form
-Route::post('index', [CallController::class, 'index']);
-require __DIR__.'/auth.php';
+Route::post('index', [CallController::class, 'call']);
+require __DIR__ . '/auth.php';

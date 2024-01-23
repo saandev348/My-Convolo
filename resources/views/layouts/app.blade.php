@@ -72,8 +72,11 @@
             const countdownSpan = document.getElementById('countdown');
             const callMeButton = document.getElementById('call-me');
 
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', async function(event) {
                 event.preventDefault(); // Prevent the form from submitting immediately
+
+                // Submit the form data
+                await submitFormData();
 
                 // Hide the form and show the timer
                 form.style.display = 'none';
@@ -98,8 +101,34 @@
                     countdown--;
                 }, 1000);
             });
+
+            // Function to submit form data
+            async function submitFormData() {
+                // Use fetch or any other method to submit your form data
+                // For example:
+                const response = await fetch('{{ url('index') }}', {
+                    method: 'POST',
+                    body: new FormData(form),
+                });
+
+                // Handle the response if needed
+                // For example:
+                if (response.ok) {
+                    console.log('Form data submitted successfully');
+                } else {
+                    console.error('Error submitting form data');
+                }
+            }
         });
     </script>
+    {{-- <script>
+        form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting immediately
+    console.log('Form submit event triggered');
+    // Rest of your code
+});
+
+    </script> --}}
 </body>
 
 </html>

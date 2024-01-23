@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route for index page
-Route::get('/', [CallController::class, 'index']);
+Route::get('/', [CallController::class, 'main']);
 // Route for submitting the form
 Route::post('index', [CallController::class, 'call']);
 require __DIR__ . '/auth.php';

@@ -7,7 +7,7 @@ use App\Models\Client;
 
 class CallController extends Controller
 {
-  function index()
+  function main()
   {
     return view('index');
   }
